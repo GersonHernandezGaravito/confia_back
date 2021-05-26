@@ -7,12 +7,13 @@ require('./database');
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/', require('./routes/index'))
+app.use('/auth/', require('./routes/index'))
 
 const rutaUsuarios = require("./routes/usuarios");
-app.use("/api/", rutaUsuarios);
+app.use("/users/", rutaUsuarios);
 
-
+const rutaPresupuesto = require("./routes/presupuesto");
+app.use("/budget/", rutaPresupuesto);
 
 app.listen(3130);
 
