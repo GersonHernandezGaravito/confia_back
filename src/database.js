@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://admin:admin@confiadb.6pt87.mongodb.net/myFirstDatabase?authSource=admin&replicaSet=atlas-bhiv4z-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true', {
+mongoose.connect('mongodb+srv://admin:admin@confiodb.kkz0s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser : true,
     
     useUnifiedTopology : true
