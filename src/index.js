@@ -25,6 +25,9 @@ app.use("/moneda/", rutaMoneda);
 const rutaFuente = require("./routes/fuenteIngreso");
 app.use("/fuente/", rutaFuente);
 
+const rutaGastos = require("./routes/gasto");
+app.use("/gasto/", rutaGastos);
+
 app.listen(port);
 
 console.log('Servidor en puerto', port);

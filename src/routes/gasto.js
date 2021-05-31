@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const Gasto = require("../models/Gasto");
-
+const Presupuesto = require("../models/Presupuesto");
 
 //Validación de acceso
 function validarToken(req, res, next){
@@ -35,13 +35,25 @@ router.get("/gastos/:id", validarToken, getGasto, (req, res) => {
 });
 
 // Create One Route 
-router.post("/gastos", validarToken, async (req, res) => {
-const {codigoUsuario, monto, periodo, fechaInicio} = req.body;
+router.post("/gastos", async (req, res) => {
+const {idPresupuesto, montoGasto} = req.body;
+  let presupuesto;
   try {
-    const nuevoGasto = new Gasto({idPresupuesto, montoGasto, fechaGasto});
-    await nuevoGasto.save();
-        
-    res.status(201).json({ nuevoGasto });
+    const nuevoGasto = new Gasto({idPresupuesto, montoGasto});
+    presupuesto = await Presupuesto.findById(req.body.idPresupuesto);
+    nuevoMonto = presupuesto.monto - req.body.monto;
+    
+    if(req.body.montoGasto <= presupuesto.monto || req.body.montoGasto > 0){
+      console.log(presupuesto.monto, "---- ", req.body.monto)
+      await nuevoGasto.save();
+      const updatedPresupuesto = await presupuesto.save();
+      res.status(201).json({ nuevoGasto,  updatedPresupuesto});
+    }
+    else {
+      console.log(presupuesto.monto, "---- ", req.body.montoGasto)
+      res.status(400).json({ message: "MONTO DE GASTO NO VALIDO" });
+    }
+    
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

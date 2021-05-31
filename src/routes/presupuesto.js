@@ -37,7 +37,7 @@ router.get("/presupuestos/:id", validarToken, getPresupuesto, (req, res) => {
 
 // Create One Route 
 router.post("/presupuestos", async (req, res) => {
-const {codigoUsuario, monto, periodo, fechaInicio} = req.body;
+const {codigoUsuario, monto, periodo, fechaInicio, idFuente, idMoneda} = req.body;
   try {
     const nuevoPresupuesto = new Presupuesto({codigoUsuario, monto, periodo, fechaInicio, idFuente, idMoneda});
     await nuevoPresupuesto.save();

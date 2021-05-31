@@ -39,6 +39,7 @@ router.patch("/add_fuente/:id", getProfile, async (req, res) => {
   }
 });
 
+
 router.patch("/delete_fuente/:id", getProfile, async (req, res) => {
     if (req.body.fuenteIngreso != null) {
       res.perfil.fuenteIngreso.pop(req.body.fuenteIngreso);
