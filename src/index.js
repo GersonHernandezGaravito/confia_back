@@ -16,6 +16,9 @@ app.use("/users/", rutaUsuarios);
 const rutaPresupuesto = require("./routes/presupuesto");
 app.use("/budget/", rutaPresupuesto);
 
+const rutaCategoria = require("./routes/categoria");
+app.use("/category/", rutaCategoria);
+
 app.listen(port);
 
 console.log('Servidor en puerto', port);
