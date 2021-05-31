@@ -3,7 +3,11 @@ const { Int32 } = require('mongodb');
 
 const esquemaPerfil = new Schema({
     codigoUsuario: String,
-    codigoRol: Number
+    codigoRol: Number,
+    categoriaU: [{
+        nombreCategoria: String,
+        descripcionCategoria: String
+    }]
 }, {
     timestamps : true
 });

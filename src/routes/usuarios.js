@@ -66,6 +66,7 @@ router.patch("/usuarios/:id", getUser, async (req, res) => {
     }
 });
 
+
 // Delete One Route
 //Delete One
 router.delete("/usuarios/:id", getUser, async (req, res) => {
@@ -91,6 +92,23 @@ async function getUser(req, res, next) {
       return res.status(500).json({ message: err.message });
     }
     res.usuario = usuario;
+    next();
+}
+
+//OBTENER PERFIL
+async function getProfile(req, res, next) {
+  let usuario;
+  let perfil;
+    try {
+      usuario = await Usuario.findById(req.params.id);
+      perfil = await Perfil.findOne({codigoUsuario: usuario._id});
+      if (perfil == null) {
+        return res.status(404).json({ message: "PERFIL NO ENCONTRADO" });
+      }
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
+    }
+    res.perfil = perfil;
     next();
 }
 
