@@ -2,8 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const esquemaGasto = new Schema({
     idPresupuesto: String,
-    montoGasto: Number,
-    fechaGasto: Date
+    montoGasto: Number
 }, {
     timestamps : true
 });
