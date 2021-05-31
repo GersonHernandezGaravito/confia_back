@@ -5,7 +5,8 @@ const esquemaPresupuesto = new Schema({
     monto: Number,
     periodo: Number,
     fechaInicio: Date,
-    idMoneda: String
+    idMoneda: String,
+    idFuente: String
 }, {
     timestamps : true
 });

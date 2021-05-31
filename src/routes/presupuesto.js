@@ -39,7 +39,7 @@ router.get("/presupuestos/:id", validarToken, getPresupuesto, (req, res) => {
 router.post("/presupuestos", async (req, res) => {
 const {codigoUsuario, monto, periodo, fechaInicio} = req.body;
   try {
-    const nuevoPresupuesto = new Presupuesto({codigoUsuario, monto, periodo, fechaInicio});
+    const nuevoPresupuesto = new Presupuesto({codigoUsuario, monto, periodo, fechaInicio, idFuente, idMoneda});
     await nuevoPresupuesto.save();
         
     res.status(201).json({ nuevoPresupuesto });
@@ -54,19 +54,24 @@ router.patch("/presupuestos/:id", validarToken, getPresupuesto, async (req, res)
   if (req.body._id != null) {
     res.presupuesto._id = req.body._id;
   }
-  if (req.body.menu != null) {
+  if (req.body.codigoUsuario != null) {
     res.presupuesto.codigoUsuario = req.body.codigoUsuario;
   }
-  if (req.body.padre != null) {
+  if (req.body.monto != null) {
       res.presupuesto.monto = req.body.monto;
     }
-  if (req.body.link != null) {
+  if (req.body.periodo != null) {
       res.presupuesto.periodo = req.body.periodo;
   }
-  if (req.body.permiso != null) {
+  if (req.body.fechaInicio != null) {
       res.presupuesto.fechaInicio = req.body.fechaInicio;
-    }
-  
+  }
+  if (req.body.idFuente != null) {
+    res.presupuesto.idFuente = req.body.idFuente;
+  }
+  if (req.body.idMoneda != null) {
+    res.presupuesto.idMoneda = req.body.idMoneda;
+  }
   try {
     const updatedPresupuesto = await res.presupuesto.save();
     res.json(updatedPresupuesto);
