@@ -7,6 +7,9 @@ const esquemaPerfil = new Schema({
     categoriaU: [{
         nombreCategoria: String,
         descripcionCategoria: String
+    }],
+    monedaU: [{
+       idMoneda: String 
     }]
 }, {
     timestamps : true
