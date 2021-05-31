@@ -38,7 +38,7 @@ router.get("/gastos/:id", validarToken, getGasto, (req, res) => {
 router.post("/gastos", validarToken, async (req, res) => {
 const {codigoUsuario, monto, periodo, fechaInicio} = req.body;
   try {
-    const nuevoGasto = new Presupuesto({idPresupuesto, montoGasto, fechaGasto});
+    const nuevoGasto = new Gasto({idPresupuesto, montoGasto, fechaGasto});
     await nuevoGasto.save();
         
     res.status(201).json({ nuevoGasto });
