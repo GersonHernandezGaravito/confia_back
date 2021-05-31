@@ -10,6 +10,10 @@ const esquemaPerfil = new Schema({
     }],
     monedaU: [{
        idMoneda: String 
+    }],
+    fuenteIngreso:[{
+        nombreFuente: String,
+        descripcionFuente: String
     }]
 }, {
     timestamps : true
